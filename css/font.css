@@ -1,0 +1,14 @@
+@font-face {
+    font-family: roboto-m;
+    src: url(../assets/font/Roboto/Roboto-Medium.ttf);
+}
+
+@font-face {
+    font-family: roboto-l;
+    src: url(../assets/font/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: comf-l;
+    src: url(../assets/font/Comfortaa/static/Comfortaa-Light.ttf);
+}

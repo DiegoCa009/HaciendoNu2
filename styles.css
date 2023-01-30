@@ -1,6 +1,7 @@
 @import url(./css/normalize.css);
 @import url(./css/font.css);
 
+
 body{
     box-sizing: border-box;
     background: rgb(159,158,166);
@@ -41,13 +42,41 @@ ul li{
 }
 
 div#index-content{
-    flex-flow: column;
+    position: relative;
     display: flex;
     flex-direction: row;
     margin: 10px auto;
     width: 80%;
+    height: 40vh;
+    max-height: 690px;
+    overflow: hidden;
     
-    background-color: rgba(3, 2, 2, 0.603);
+    
+}
+
+div.content_box-animation-slide{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 102%;
+    height: 100%;
+    animation-fill-mode: forwards;  
+    transition: 1s;
+}
+
+div.content_box-animation-slide:nth-child(1){
+    transform: translateX(0%);
+    
+}
+div.content_box-animation-slide:nth-child(2){
+    transform: translateX(100%); 
+}
+
+.slide-hidden{
+    animation: sliderXa 1s ease-in;
+}
+.slide-show{
+    animation: sliderXb 1s ease-in;
 }
 
 .content_image{
@@ -83,15 +112,39 @@ img{
  object-fit: cover;
  width: 100%;
  height: 100%;
+ transition: 0.5s;
+
+ 
  
 }
 
 .index-info{
-    margin: 0 auto;
+    margin: 20px auto;
     width: 80%;
     height: 100vh;
     background-color: rgba(72, 79, 85, 0.616);
 }
+
+.index-info .index-info_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+.index-info .index-info_header button{
+    outline-style: none;
+    border-style: none;
+}
+
+.index-info .index-info_header input{
+    
+    border-style: none;
+    
+}
+
+
 
 
 /* SELECTORS*/
@@ -107,22 +160,26 @@ img{
 }
 
 
-
-
 .content_image:hover > .image_info{
     transform: translate(0,0);
 }
 
 
+
 nav ul li:nth-child(2){
     border-bottom: solid black 1px;
 }
-nav ul li:nth-child(){
-    
-}
 
-/* ul li:nth-child(1){
-    left: 0;
-    position: absolute;
-    color: red;
-} */
+
+/* --------------*/
+
+
+    @keyframes sliderXa {
+        from {transform: translateX(0%);}
+        to {transform: translateX(-100%); visibility: hidden;}
+    }
+
+    @keyframes sliderXb {
+        from {transform: translateX(100%);}
+        to {transform: translateX(0%);}
+    }

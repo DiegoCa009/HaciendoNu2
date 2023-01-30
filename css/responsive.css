@@ -1,0 +1,13 @@
+@media screen and (orientation: landscape) and (min-width: 1200px) {
+    div#index-content{
+        height: 80vh; 
+    }
+}
+
+@media screen and (orientation: portrait) {
+    div#index-content{
+        height: 40vh; 
+    }
+}
+
+

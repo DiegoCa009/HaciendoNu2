@@ -1,15 +1,22 @@
 @import url(./css/normalize.css);
 @import url(./css/font.css);
 
+    
+/* Aplicar a todos los elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+
 
 body{
-    box-sizing: border-box;
     background: rgb(159,158,166);
     background: linear-gradient(90deg, rgba(159,158,166,1) 0%, rgba(218,218,224,1) 33%, rgba(228,235,236,1) 100%);
 
 }
-
-
 nav{
     display: flex;
     align-items: center;
@@ -107,40 +114,51 @@ width: 100%;
     padding: 10px
 }
     
-img{
+.content_image img{
  aspect-ratio: 2/3;
  object-fit: cover;
  width: 100%;
  height: 100%;
  transition: 0.5s;
-
- 
- 
 }
 
-.index-info{
+.index-info-search{
     margin: 20px auto;
     width: 80%;
     height: 100vh;
-    background-color: rgba(72, 79, 85, 0.616);
+    
+    
 }
 
-.index-info .index-info_header {
+.index-info-search ._search-info-header {
+    background: rgb(231, 193, 143);
+    background: linear-gradient(150deg, rgba(233, 115, 92, 0.308) 19%, rgba(241, 115, 87, 0.37) 71%);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    padding: 18px;
     width: 100%;
 }
 
-.index-info .index-info_header button{
-    outline-style: none;
-    border-style: none;
+.index-info-search ._search-info-header button{
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: roboto-m;
+    padding: 10px;
+    margin-left: 10px;
+    border: rgb(209, 164, 164) 1px solid;
 }
 
-.index-info .index-info_header input{
-    
-    border-style: none;
+.index-info-search ._search-info-header input{
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    width: 50%;
+    font-family: roboto-l;
+    font-weight: 700;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.863);
+    border: rgba(0, 0, 0, 0.747) 1px solid;
+    outline-style: none;
     
 }
 
@@ -172,6 +190,74 @@ nav ul li:nth-child(2){
 
 
 /* --------------*/
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+    background-color: rgb(131, 103, 125);
+    width: 100%;
+    
+  }
+
+  .container-results {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 5px;
+    background-color: rgb(184, 141, 181);
+    
+    
+  }
+
+  .container img {
+    width: 30%;
+  }
+
+._results-product-header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+._results-product-header h1{
+    margin: 0;
+    background-color: rgb(95, 70, 70);
+    text-align: center;
+
+}
+
+.box-help--flex-row{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(140, 140, 173);
+    width: 100%;
+    height: 100%;
+}
+
+.box-help--flex-row p{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 90%;
+    
+}
+
+.box-help--flex-row p:nth-child(1){
+    align-items: center;
+    font-family: roboto-l;
+    font-weight: 500;
+}
+
+.box-help--flex-row p:nth-child(2){
+    align-items: flex-end;
+    font-family: roboto-m;
+}
+
+
+
 
 
     @keyframes sliderXa {

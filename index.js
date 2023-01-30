@@ -1,4 +1,4 @@
-let indexInfo = document.querySelector('.index-info');
+let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
 let box_slider = document.querySelectorAll('.content_box-animation-slide');
 

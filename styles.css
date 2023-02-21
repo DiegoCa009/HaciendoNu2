@@ -13,17 +13,27 @@
 
 
 body{
-    background: rgb(159,158,166);
-    background: linear-gradient(90deg, rgba(159,158,166,1) 0%, rgba(218,218,224,1) 33%, rgba(228,235,236,1) 100%);
+    position: relative;
+    background: rgb(220, 219, 223);
+    
 
 }
+svg{
+    fill: #f0bab8;
+    transform: translateY(-10%);
+    z-index: -110000;
+    position: absolute;
+    margin: auto;
+    display: block;
+    
+}
+
 nav{
     display: flex;
     align-items: center;
     position: relative;
     border-radius: 5px;
-    background: rgb(154, 120, 76);
-    background: linear-gradient(90deg, rgba(154,120,76,0.4) 0%, rgba(193,135,98,0.141631652661064) 77%);
+    background: #121111d9;
     margin: 10px auto;
     width: 95%;
     height: 4rem;
@@ -42,10 +52,11 @@ ul {
 ul li{
     cursor: pointer;
     font-family: comf-l;
-    font-weight: 400;
+    font-weight: 900;
     font-size: 1.1rem;
     margin: 0 10px;
     display: inline-block;
+    color: rgb(250, 248, 251);
 }
 
 div#index-content{
@@ -124,15 +135,15 @@ width: 100%;
 
 .index-info-search{
     margin: 20px auto;
-    width: 80%;
+    width: 100%;
     height: 100vh;
+    
     
     
 }
 
 .index-info-search ._search-info-header {
-    background: rgb(231, 193, 143);
-    background: linear-gradient(150deg, rgba(233, 115, 92, 0.308) 19%, rgba(241, 115, 87, 0.37) 71%);
+    background: #f0bab8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,7 +164,6 @@ width: 100%;
     box-sizing: border-box;
     font-size: 0.9rem;
     width: 50%;
-    font-family: roboto-l;
     font-weight: 700;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.863);
@@ -193,71 +203,89 @@ nav ul li:nth-child(2){
 
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
     padding: 20px;
-    background-color: rgb(131, 103, 125);
+    justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    background: #121111d9;
     width: 100%;
-    
   }
 
   .container-results {
+    border-radius: 20px;
+    background-color: rgb(228, 223, 220);
     display: flex;
-    flex-direction: row;
-    margin: 10px 5px;
-    background-color: rgb(184, 141, 181);
-    
-    
+    flex-direction: column;
+    width: 400px;
+  }
+
+  .container-results ._image-container{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
   }
 
   .container img {
-    width: 30%;
+    width: 60%;
+    box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
+-webkit-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
+-moz-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
+
+    
+    
   }
 
 ._results-product-header{
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 20px;
+    height: 100%;
 }
 
 ._results-product-header h1{
+    color: rgb(253, 250, 250);
     margin: 0;
-    background-color: rgb(95, 70, 70);
+    background-color: #f27f79;
     text-align: center;
+    padding: 8px;
+}
 
+._results-product-header p{
+    text-align: left;
+    font-family: roboto-l;
+    padding: 0px 30px 0px 30px;
 }
 
 .box-help--flex-row{
     display: flex;
+    justify-content: space-around;
     flex-direction: row;
-    background-color: rgb(140, 140, 173);
     width: 100%;
-    height: 100%;
+    padding: 20px;
 }
 
-.box-help--flex-row p{
-    padding: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    height: 90%;
-    
+.box-help--flex-row button{
+    background-color: #badac4;
+    outline-style: none;
+    border: none;
+    font-size: 24px;  
+    border-radius: 30px;
+    padding: 13px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff5900fc;
+    cursor: pointer;
 }
+
 
 .box-help--flex-row p:nth-child(1){
-    align-items: center;
-    font-family: roboto-l;
-    font-weight: 500;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
-
-.box-help--flex-row p:nth-child(2){
-    align-items: flex-end;
-    font-family: roboto-m;
-}
-
-
-
 
 
     @keyframes sliderXa {

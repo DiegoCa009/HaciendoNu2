@@ -11,6 +11,7 @@
     
 </head>
 <body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,149.3C480,128,600,128,720,149.3C840,171,960,213,1080,218.7C1200,224,1320,192,1380,176L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
     <nav>
         <ul>
             <li>PRODUCTOS</li>
@@ -69,26 +70,26 @@
 
     <div class="index-info-search">
         <div class="_search-info-header">
-            <input type="text">
-            <button>Buscar</button> 
+            <input type="text" id="search-txt">
+            <button id="search-btn">Buscar</button> 
         </div>
-
+        
         <div class="container">
             <div class="container-results">
-                <img src="./assets/images/empty-image.png" alt="Image 1">
+                <div class="_image-container">
+                    <img src="./assets/images/empty-image.png" alt="Image 1">
+                </div>
                 <div class="_results-product-header">
                     <h1 class="product-title">macrame tapiz</h1>
-                    <div class="box-help--flex-row">
-                        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo pariatur sunt eveniet dolor repellendus velit cum </p>
-                        <p class="product-price">$450 MXN</p>
-                    </div>
+                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo pariatur sunt eveniet dolor repellendus velit cum </p>
                 </div>
+                <div class="box-help--flex-row">
+                    <p class="product-price">$450 MXN</p>
+                    <button>Comprar</button>
+                </div>
+                
             </div>
-           
-
-
-            
-            
+         
         </div>
     </div>
 

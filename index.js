@@ -1,3 +1,5 @@
+import './controllers/input-search.js';
+
 let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
 let box_slider = document.querySelectorAll('.content_box-animation-slide');
@@ -10,12 +12,10 @@ li[0].addEventListener('click',()=>{
     
 })
 
-console.log(box_slider[1].classList.contains('content_box-animation-slide'))
 
 
-let {transform} = getComputedStyle(box_slider[0])
 
-console.log(getComputedStyle(box_slider[0]).transform);
+let {transform} = getComputedStyle(box_slider[0])   
 
 let int = setInterval(()=>{
 

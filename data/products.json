@@ -1,0 +1,26 @@
+[
+
+    {
+        "name": "Maceta colgante",
+        "price": "450",
+        "description": "Diosa chichimeca",
+        "image": "../assets/images/results/Alemasan.jpeg",
+        "keywords": ["colgantes", "macetas", "colgante"]
+    },
+    
+    {
+        "name": "Cortina",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/Alemasan.jpeg"
+    }, 
+
+    {
+        "name": "Cojines",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/Alemasan.jpeg"
+    }
+
+
+]

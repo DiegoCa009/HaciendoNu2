@@ -1,7 +1,7 @@
 [
 
     {
-        "name": "Maceta colgante",
+        "name": "Diosa mami",
         "price": "450",
         "description": "Diosa chichimeca",
         "image": "../assets/images/results/Alemasan.jpeg",
@@ -12,7 +12,7 @@
         "name": "Cortina",
         "price": "650",
         "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
-        "image": "../assets/images/results/Alemasan.jpeg"
+        "image": "../assets/images/results/macrame-cortina.jpg"
     }, 
 
     {
@@ -20,7 +20,116 @@
         "price": "650",
         "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
         "image": "../assets/images/results/Alemasan.jpeg"
-    }
+    },
 
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    },
+    {
+        "name": "Colgante madera",
+        "price": "650",
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti iure adipisci veniam. Vero autem cumque nisi pariatur amet culpa eligendi asperiores. Mollitia odio explicabo quidem fugiat laborum, optio soluta dignissimos",
+        "image": "../assets/images/results/colgante-madera.jpg"
+    }
 
 ]

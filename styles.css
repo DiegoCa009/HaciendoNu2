@@ -18,7 +18,7 @@ body{
     
 
 }
-svg{
+svg#shape-main{
     fill: #f0bab8;
     transform: translateY(-10%);
     z-index: -110000;
@@ -37,6 +37,13 @@ nav{
     margin: 10px auto;
     width: 95%;
     height: 4rem;
+}
+
+nav img{
+    width: 10%;
+    border-radius: 100%;
+    
+
 }
 
 
@@ -153,11 +160,13 @@ width: 100%;
 
 .index-info-search ._search-info-header button{
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 6px;
     font-family: roboto-m;
     padding: 10px;
     margin-left: 10px;
-    border: rgb(209, 164, 164) 1px solid;
+    color: #1d100f;
+    border: none;
+    background-color: rgb(255, 254, 254);
 }
 
 .index-info-search ._search-info-header input{
@@ -166,8 +175,9 @@ width: 100%;
     width: 50%;
     font-weight: 700;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.863);
-    border: rgba(0, 0, 0, 0.747) 1px solid;
+    background-color: rgba(24, 22, 22, 0.863);
+    border: rgba(248, 179, 179, 0.897) 1px solid;
+    color: aliceblue;
     outline-style: none;
     
 }
@@ -202,7 +212,7 @@ nav ul li:nth-child(2){
 /* --------------*/
 
 
-.container {
+#container {
     padding: 20px;
     justify-items: center;
     display: grid;
@@ -229,19 +239,44 @@ nav ul li:nth-child(2){
     width: 100%;
   }
 
-  .container img {
+  ._image-container{
+    position: relative;
+    
+    
+  }
+  .container-results:hover img:nth-child(1){
+    
+    filter: contrast(1);
+    
+  }
+
+  ._image-container img:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 80px;
+    top: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    filter: contrast(0.3);
+    
+    
+  }
+
+
+  ._image-container img:nth-child(2) {
     aspect-ratio: 4/4;
     width: 60%;
     box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
--webkit-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
--moz-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
-transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1)
+    -webkit-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
+    -moz-box-shadow: -10px 12px 12px -7px rgba(0,0,0,0.44);
+    transition: 2s cubic-bezier(0.075, 0.82, 0.165, 1)
   }
 
-  .container img:hover {
+  /* ._image-container img:nth-child(2):hover {
     border-radius: 100%;
     transform: scale(120%);
-  }
+  } */
 
 ._results-product-header{
     display: flex;

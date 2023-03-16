@@ -2,7 +2,7 @@ const search = document.querySelector('#search-btn');
 
 search.addEventListener('click', async()=>{
     let arr = [];
-    const container = document.querySelector('.container');
+    const container = document.querySelector('#container');
     container.innerHTML = "";
     const txt = document.querySelector('#search-txt').value;
      
@@ -15,7 +15,8 @@ search.addEventListener('click', async()=>{
         container.innerHTML += `
         <div class="container-results">
                 <div class="_image-container">
-                    <img src="${element.image}" alt="Image 1">
+                    <img src="./assets/images/icons/heart.png" alt="" onclick="addFavorites(JSON.stringify({name: '${element.name}'}))">
+                    <img src="${element.image}" alt="Image 1">  
                 </div>
                 <div class="_results-product-header">
                     <h1 class="product-title">${element.name}</h1>
@@ -30,5 +31,5 @@ search.addEventListener('click', async()=>{
         `
     }));
 
-   console.log(arr);
+   
 })

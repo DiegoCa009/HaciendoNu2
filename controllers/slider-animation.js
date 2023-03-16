@@ -8,7 +8,7 @@ class AnimationSlider{
     play(){
         const box_slider = document.querySelectorAll('.content_box-animation-slide');
         this.play_animation = setInterval(()=>{
-            console.log('comenzando animacion')
+        
             
             if (getComputedStyle(box_slider[0]).transform  === 'matrix(1, 0, 0, 1, 0, 0)'){
                 

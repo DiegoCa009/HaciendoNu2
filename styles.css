@@ -1,5 +1,6 @@
 @import url(./css/normalize.css);
 @import url(./css/font.css);
+@import url(./css/events.css);
 
     
 /* Aplicar a todos los elementos */
@@ -8,9 +9,6 @@
 *::after {
   box-sizing: border-box;
 }
-
-
-
 
 body{
     position: relative;
@@ -244,11 +242,7 @@ nav ul li:nth-child(2){
     
     
   }
-  .container-results:hover img:nth-child(1){
-    
-    filter: contrast(1);
-    
-  }
+  
 
   ._image-container img:nth-child(1) {
     width: 30px;
@@ -259,8 +253,6 @@ nav ul li:nth-child(2){
     cursor: pointer;
     transition: 0.2s;
     filter: contrast(0.3);
-    
-    
   }
 
 
@@ -338,3 +330,4 @@ nav ul li:nth-child(2){
         from {transform: translateX(100%);}
         to {transform: translateX(0%);}
     }
+

@@ -23,10 +23,13 @@ class Favorites {
         }
 
         this.favorites.push(product);
+        this._commit(this.favorites);
+        this.controller.linkTodrawModal(product.name, this.favorites.length);
         console.log(this.favorites)
     }
     remove(id) {
         this.favorites = this.favorites.filter(obj => obj.id != id);
+        this._commit(this.favorites);
         console.log(this.favorites)
 
     }
@@ -35,10 +38,16 @@ class Favorites {
         this.controller = controller
 
     }
-    exists(productID){
-        
+
+    _commit(obj) {
+        localStorage.setItem('database', JSON.stringify(obj));
+    }
+    exists(productID) {
+
         return !!this.favorites.find(obj => obj.id == productID)
     }
+
+
 
 
 
@@ -52,7 +61,9 @@ class Favorites {
 class FavoritesView {
     constructor() {
         this.search = document.querySelector('#search-btn');
-        
+        this.modal = document.querySelector('#modal-favorites');
+        this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
+        this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
     }
     fillHeart(id) {
         this.results = document.querySelectorAll('._image-container');
@@ -62,25 +73,25 @@ class FavoritesView {
     emptyHeart(id) {
         this.results[id].childNodes[1].classList.toggle('add-heart');
     }
-    drawResults(callback){
+    drawResults(callback) {
 
-        
+
         this.search.addEventListener('click', async () => {
             let arr = [];
             const container = document.querySelector('#container');
             container.innerHTML = "";
             const txt = document.querySelector('#search-txt').value.toLowerCase();
-        
-        
+
+
             const data = await fetch('../data/products.json')
                 .then((data) => data.json())
                 .then((data) => data.forEach((element, i) => {
                     if (!`${element.name}`.toLowerCase().includes(txt)) return
-        
+
                     container.innerHTML += `
                 <div class="container-results">
                         <div class="_image-container">
-                            <img class="${callback(element.id) ? "add-heart": ''}" src="./assets/images/icons/heart.png" alt="" onclick="favorites.add(JSON.stringify(
+                            <img class="${callback(element.id) ? "add-heart" : ''}" src="./assets/images/icons/heart.png" alt="" onclick="favorites.add(JSON.stringify(
                                 {
                                     name: '${element.name}', 
                                     id: '${element.id}',
@@ -104,11 +115,17 @@ class FavoritesView {
                     </div>
                 `
                 }));
-        
-        
+
+
         })
     }
 
+    drawModal(name, amount){
+        this.modal_product.innerHTML = `${name} Agregado`;
+        this.modal_amount.innerHTML  = `${amount} en Favoritos  <a href="">comprar</a>`
+        this.modal.classList.add('faded');
+        
+    }
 }
 
 
@@ -116,6 +133,7 @@ class FavoritesController {
     constructor(model, view) {
         this.model = model;
         this.view = view;
+        this.model.setController(this);
         this.view.drawResults(this.linkToexists)
         
     }
@@ -127,7 +145,8 @@ class FavoritesController {
         this.model.add(parse);
     }
     linkToexists = productID => this.model.exists(productID);
-    
+    linkTodrawModal(name,amount) {this.view.drawModal(name,amount)};
+
 }
 
 window.favorites = new FavoritesController(new Favorites, new FavoritesView);

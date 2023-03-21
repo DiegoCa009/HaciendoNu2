@@ -1,4 +1,18 @@
 .add-heart{
     filter: contrast(1) !important;
 }
+
+.faded{
+    animation: visible_item 4s;
+}
     
+
+@keyframes visible_item {
+    from { visibility: visible;}
+    to { visibility: hidden;}
+}
+
+@keyframes fade-away {
+    from { opacity: 1;}
+    to { opacity: 0;}
+}

@@ -2,6 +2,13 @@
 @import url(./css/font.css);
 @import url(./css/events.css);
 
+:root{
+    /*agregar variables
+        rgb(220, 219, 223) blanco
+
+    */
+}
+
     
 /* Aplicar a todos los elementos */
 *,
@@ -9,6 +16,29 @@
 *::after {
   box-sizing: border-box;
 }
+
+div#modal-favorites{
+    border-radius: 40px;
+    font: optional;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(245,206,205);
+    background: -moz-radial-gradient(circle, rgba(245,206,205,1) 19%, rgba(240,186,184,1) 95%);
+    background: -webkit-radial-gradient(circle, rgba(245,206,205,1) 19%, rgba(240,186,184,1) 95%);
+    background: radial-gradient(circle, rgba(245,206,205,1) 19%, rgba(240,186,184,1) 95%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5cecd",endColorstr="#f0bab8",GradientType=1);   
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    right: 10px;
+    top: calc(100vh - 220px);
+    z-index: 1000000;
+    visibility: hidden;
+    
+}
+
+
 
 body{
     position: relative;
@@ -25,6 +55,7 @@ svg#shape-main{
     display: block;
     
 }
+
 
 nav{
     display: flex;

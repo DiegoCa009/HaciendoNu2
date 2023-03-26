@@ -3,16 +3,48 @@
 }
 
 .faded{
-    animation: visible_item 4s;
+    animation: appear 0.5s forwards, fade-out 0.5s ease-in 7s forwards;
+}
+
+.pop{
+  animation: pop 0.5s linear forwards; 
 }
     
-
-@keyframes visible_item {
-    from { visibility: visible;}
-    to { visibility: hidden;}
+@keyframes pop {
+  from{
+    transform: scale(1.02);
+    
+  }
+  to{
+    transform: scale(1);
+    visibility: visible;
+  }
 }
 
-@keyframes fade-away {
-    from { opacity: 1;}
-    to { opacity: 0;}
-}
+
+
+@keyframes appear {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      visibility: visible;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  
+  

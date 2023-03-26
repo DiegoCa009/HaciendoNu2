@@ -18,19 +18,21 @@ class Favorites {
     }
     add(product) {
         if (!!this.favorites.find(obj => obj.id == product.id)) {
-            this.remove(product.id);
+            this.remove(product);
             return
         }
 
         this.favorites.push(product);
         this._commit(this.favorites);
         this.controller.linkTodrawModal(product.name, this.favorites.length);
-        console.log(this.favorites)
+        
     }
-    remove(id) {
-        this.favorites = this.favorites.filter(obj => obj.id != id);
-        this._commit(this.favorites);
-        console.log(this.favorites)
+    remove(product) {
+
+        this.favorites = this.favorites.filter(obj => obj.id != product.id);
+        this.controller.linkTodrawModal('removido', this.favorites.length);
+        
+        
 
     }
 
@@ -120,12 +122,25 @@ class FavoritesView {
         })
     }
 
-    drawModal(name, amount){
+    drawModalAdd(name, amount){
         this.modal_product.innerHTML = `${name} Agregado`;
         this.modal_amount.innerHTML  = `${amount} en Favoritos  <a href="">comprar</a>`
+        
+      
+        this.modal.addEventListener('animationend', (e)=>{
+            if (e.animationName === 'fade-out'){
+                this.modal.classList.remove('faded');        
+            }
+            
+        })
+
+        
         this.modal.classList.add('faded');
         
+        
     }
+
+    
 }
 
 
@@ -139,13 +154,12 @@ class FavoritesController {
     }
 
     add(data, id) {
-        console.log(id);
         const parse = JSON.parse(data);
         this.view.fillHeart(id);
         this.model.add(parse);
     }
     linkToexists = productID => this.model.exists(productID);
-    linkTodrawModal(name,amount) {this.view.drawModal(name,amount)};
+    linkTodrawModal(name,amount) {this.view.drawModalAdd(name,amount)};
 
 }
 

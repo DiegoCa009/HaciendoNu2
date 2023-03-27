@@ -1,4 +1,3 @@
-import './controllers/input-search.js';
 import './controllers/slider-animation.js';
 
 let indexInfo = document.querySelector('.index-info-search');
@@ -24,13 +23,13 @@ class Favorites {
 
         this.favorites.push(product);
         this._commit(this.favorites);
-        this.controller.linkTodrawModal(product.name, this.favorites.length);
+        this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Agregado');
         
     }
     remove(product) {
-
         this.favorites = this.favorites.filter(obj => obj.id != product.id);
-        this.controller.linkTodrawModal('removido', this.favorites.length);
+        this._commit(this.favorites);
+        this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');
         
         
 
@@ -44,6 +43,13 @@ class Favorites {
     _commit(obj) {
         localStorage.setItem('database', JSON.stringify(obj));
     }
+    _localStorage(){
+        
+        let data = JSON.parse(localStorage.getItem('database'));
+        this.favorites = data || [];
+        console.log(data, this._localStorage.name);
+    }
+
     exists(productID) {
 
         return !!this.favorites.find(obj => obj.id == productID)
@@ -66,6 +72,7 @@ class FavoritesView {
         this.modal = document.querySelector('#modal-favorites');
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
+        this._listeners();
     }
     fillHeart(id) {
         this.results = document.querySelectorAll('._image-container');
@@ -76,7 +83,7 @@ class FavoritesView {
         this.results[id].childNodes[1].classList.toggle('add-heart');
     }
     drawResults(callback) {
-
+        
 
         this.search.addEventListener('click', async () => {
             let arr = [];
@@ -122,25 +129,51 @@ class FavoritesView {
         })
     }
 
-    drawModalAdd(name, amount){
-        this.modal_product.innerHTML = `${name} Agregado`;
+    drawModalAdd(name, amount, action){
+        this.modal_product.innerHTML = `${action} <span class='highlight'>${name}</span>`;
         this.modal_amount.innerHTML  = `${amount} en Favoritos  <a href="">comprar</a>`
         
-      
-        this.modal.addEventListener('animationend', (e)=>{
-            if (e.animationName === 'fade-out'){
-                this.modal.classList.remove('faded');        
+
+        this.modal.addEventListener('animationstart',(e)=>{
+            switch (e.animationName) {
+                // case 'pop':
+                //     // this.modal.classList.remove('fade-out');
+                //     break;
+            }
+        })
+
+        this.modal.addEventListener('animationend',(e)=>{
+            switch (e.animationName) {
+                case 'appear':
+                    this.modal.style.visibility = 'visible';   
+                    this.modal.classList.add('fade-out');
+                break;
+                
+                case 'fade-out':
+                    this.modal.classList.remove('fade-out'); 
+                    this.modal.classList.remove('appear'); 
+                    this.modal.style.visibility = 'hidden';    
+                break;
+            
+                default:
+                    break;
             }
             
         })
 
-        
-        this.modal.classList.add('faded');
-        
-        
+      if (!this.modal.classList.contains('appear')) return this.modal.classList.add('appear');
+
     }
 
-    
+    _listeners(){ 
+        this.modal.addEventListener('mouseover',(e)=>{
+            e.target.style.animationPlayState = 'paused';
+         })
+
+         this.modal.addEventListener('mouseout',(e)=>{
+            e.target.style.animationPlayState = 'running';
+         }) 
+    }
 }
 
 
@@ -149,7 +182,9 @@ class FavoritesController {
         this.model = model;
         this.view = view;
         this.model.setController(this);
+        this.model._localStorage();
         this.view.drawResults(this.linkToexists)
+        
         
     }
 
@@ -159,7 +194,6 @@ class FavoritesController {
         this.model.add(parse);
     }
     linkToexists = productID => this.model.exists(productID);
-    linkTodrawModal(name,amount) {this.view.drawModalAdd(name,amount)};
 
 }
 

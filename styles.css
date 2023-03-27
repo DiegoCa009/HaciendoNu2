@@ -35,7 +35,7 @@ div#modal-favorites{
     top: calc(100vh - 220px);
     z-index: 1000000;
     visibility: hidden;
-    transform: scale(0.9);
+    transform: scale(1);
     
 }
 

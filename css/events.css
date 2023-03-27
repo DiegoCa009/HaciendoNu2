@@ -2,22 +2,30 @@
     filter: contrast(1) !important;
 }
 
-.faded{
-    animation: appear 0.5s forwards, fade-out 0.5s ease-in 7s forwards;
+.appear{
+    animation: appear 0.5s forwards ;
 }
 
 .pop{
-  animation: pop 0.5s linear forwards; 
+  animation: pop 1s linear forwards; 
 }
-    
+
+.fade-out{
+  animation:fade-out 0.2s ease-in 2s forwards;
+}
+
+.highlight{
+  color: #ff5900fc;
+}
+
 @keyframes pop {
   from{
-    transform: scale(1.02);
+    transform: scale(0.5);
     
   }
   to{
     transform: scale(1);
-    visibility: visible;
+    
   }
 }
 
@@ -26,6 +34,7 @@
 @keyframes appear {
     0% {
       opacity: 0;
+      transform: scale(0.9);
       visibility: hidden;
     }
     100% {
@@ -41,6 +50,7 @@
       visibility: visible;
     }
     100% {
+      transform: scale(0.9);
       opacity: 0;
       visibility: hidden;
     }

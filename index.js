@@ -72,7 +72,7 @@ class FavoritesView {
         this.modal = document.querySelector('#modal-favorites');
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
-        this._listeners();
+        // this._listeners();
     }
     fillHeart(id) {
         this.results = document.querySelectorAll('._image-container');
@@ -136,9 +136,9 @@ class FavoritesView {
 
         this.modal.addEventListener('animationstart',(e)=>{
             switch (e.animationName) {
-                // case 'pop':
-                //     // this.modal.classList.remove('fade-out');
-                //     break;
+                case 'pop':
+                    
+                    break;
             }
         })
 
@@ -146,12 +146,11 @@ class FavoritesView {
             switch (e.animationName) {
                 case 'appear':
                     this.modal.style.visibility = 'visible';   
-                    this.modal.classList.add('fade-out');
+                    this.modal.style.animation = 'fade-out 0.2s ease-in 5s forwards';
+                    
                 break;
                 
                 case 'fade-out':
-                    this.modal.classList.remove('fade-out'); 
-                    this.modal.classList.remove('appear'); 
                     this.modal.style.visibility = 'hidden';    
                 break;
             
@@ -160,20 +159,29 @@ class FavoritesView {
             }
             
         })
-
-      if (!this.modal.classList.contains('appear')) return this.modal.classList.add('appear');
+        
+    
+        const {animationName} = getComputedStyle(this.modal);
+        
+    if (animationName != 'appear') {
+        this.modal.style.animation = 'appear 0.2s forwards';  
+        return
+      }
+        
+        
 
     }
 
-    _listeners(){ 
-        this.modal.addEventListener('mouseover',(e)=>{
-            e.target.style.animationPlayState = 'paused';
-         })
+    // _listeners(){ 
+    //     this.modal.addEventListener('mouseover',(e)=>{
+            
+    //         e.target.style.animationPlayState = 'paused';
+    //      })
 
-         this.modal.addEventListener('mouseout',(e)=>{
-            e.target.style.animationPlayState = 'running';
-         }) 
-    }
+    //      this.modal.addEventListener('mouseout',(e)=>{
+    //         e.target.style.animationPlayState = 'running';
+    //      }) 
+    // }
 }
 
 

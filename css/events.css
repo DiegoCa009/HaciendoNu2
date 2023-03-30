@@ -3,11 +3,11 @@
 }
 
 .appear{
-    animation: appear 0.5s forwards ;
+    animation: appear 0.2s forwards !important;
 }
 
 .pop{
-  animation: pop 1s linear forwards; 
+  animation: pop 0.2s linear forwards; 
 }
 
 .fade-out{
@@ -20,7 +20,7 @@
 
 @keyframes pop {
   from{
-    transform: scale(0.5);
+    transform: scale(1.02);
     
   }
   to{
@@ -35,7 +35,7 @@
     0% {
       opacity: 0;
       transform: scale(0.9);
-      visibility: hidden;
+      
     }
     100% {
       opacity: 1;

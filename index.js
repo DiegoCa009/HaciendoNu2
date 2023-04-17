@@ -1,10 +1,8 @@
 import './controllers/slider-animation.js';
-
+import { card_model } from './helpers/card-model.js';
+import { Filter } from './views/results.js';
 let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
-
-
-
 li[0].addEventListener('click', () => {
     indexInfo.scrollIntoView({ behavior: "smooth" })
 
@@ -13,6 +11,7 @@ li[0].addEventListener('click', () => {
 class Favorites {
     constructor() {
         this.favorites = [];
+        this.dataBase;
 
     }
     add(product) {
@@ -21,17 +20,20 @@ class Favorites {
             return
         }
 
-        this.favorites.push(product);
-        this._commit(this.favorites);
+        const index = this.dataBase.findIndex(obj => obj.id == product.id)
+        this.dataBase[index].favorite = true;
+        this.favorites.push(this.dataBase[index]);
+        this._commit();
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Agregado');
-        
+
     }
     remove(product) {
+        const index = this.favorites.findIndex(ob => ob.id === Number(product.id))
+        this.favorites[index].favorite = false;
         this.favorites = this.favorites.filter(obj => obj.id != product.id);
-        this._commit(this.favorites);
+        
+        this._commit();
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');
-        
-        
 
     }
 
@@ -40,141 +42,129 @@ class Favorites {
 
     }
 
-    _commit(obj) {
-        localStorage.setItem('database', JSON.stringify(obj));
+    _commit() {
+        localStorage.setItem('database', JSON.stringify(this.dataBase));
     }
-    _localStorage(){
-        
+
+
+
+
+    async getData() {
+
+        fetch('../data/products.json')
+            .then((data) => data.json())
+            .then((data) => {
+                this.dataBase = data;
+                this._modifyData();
+                this.controller.view.searchListeners(this.dataBase);
+            }
+            )
+            .catch(error => console.log(`${this.getData.name} => ${error}`))
+
+    }
+    _modifyData() {
+        this.dataBase.forEach(obj => obj.favorite = false);
+    }
+
+    _localStorage() {
+
+        if (!localStorage.getItem('database')) return this.getData()
+
+
         let data = JSON.parse(localStorage.getItem('database'));
-        this.favorites = data || [];
-        console.log(data, this._localStorage.name);
+        this.dataBase = data;
+        this.dataBase.forEach(obj => {
+            if (obj.favorite === true) this.favorites.push(obj)
+        })
+        this.controller.view.searchListeners(this.dataBase);
     }
-
-    exists(productID) {
-
-        return !!this.favorites.find(obj => obj.id == productID)
-    }
-
-
-
-
-
-
 
 }
 
-
-
-
 class FavoritesView {
     constructor() {
+        this.container = document.querySelector('#container');
         this.search = document.querySelector('#search-btn');
+        this.filters = document.querySelectorAll('.index-info-search ._search-info-header ul li');
         this.modal = document.querySelector('#modal-favorites');
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
-        // this._listeners();
+        this.filter = new Filter(this.container);
     }
-    fillHeart(id) {
-        this.results = document.querySelectorAll('._image-container');
-        this.results[id].childNodes[1].classList.toggle('add-heart');
+    fillHeart(element) {
+
+        element.classList.toggle('add-heart');
 
     }
-    emptyHeart(id) {
-        this.results[id].childNodes[1].classList.toggle('add-heart');
-    }
-    drawResults(callback) {
-        
+
+    searchListeners(data) {
 
         this.search.addEventListener('click', async () => {
             let arr = [];
-            const container = document.querySelector('#container');
-            container.innerHTML = "";
+            this.container.innerHTML = "";
             const txt = document.querySelector('#search-txt').value.toLowerCase();
+            data.forEach((element) => {
 
-
-            const data = await fetch('../data/products.json')
-                .then((data) => data.json())
-                .then((data) => data.forEach((element, i) => {
-                    if (!`${element.name}`.toLowerCase().includes(txt)) return
-
-                    container.innerHTML += `
-                <div class="container-results">
-                        <div class="_image-container">
-                            <img class="${callback(element.id) ? "add-heart" : ''}" src="./assets/images/icons/heart.png" alt="" onclick="favorites.add(JSON.stringify(
-                                {
-                                    name: '${element.name}', 
-                                    id: '${element.id}',
-                                    price: '${element.price}',
-                                    description: '${element.description}',
-                                    image: '${element.image}',
-                                    
+                if (!element.name.toLowerCase().includes(txt.toLowerCase())) return
+                container.innerHTML += card_model(element);
+            })
+        })
         
-                                }),${i})">
-                            <img src="${element.image}" alt="Image 1">  
-                        </div>
-                        <div class="_results-product-header">
-                            <h1 class="product-title">${element.name}</h1>
-                            <p class="product-description">${element.description}</p>
-                        </div>
-                        <div class="box-help--flex-row">
-                            <p class="product-price">$${element.price} MXN</p>
-                            <button>Comprar</button>
-                        </div>
-                        
-                    </div>
-                `
-                }));
-
-
+        this.filters.forEach(element =>{
+            element.addEventListener('click',(e)=>{
+                this.filter.perFavorites(data)
+            })
         })
     }
 
-    drawModalAdd(name, amount, action){
+    drawModalAdd(name, amount, action) {
         this.modal_product.innerHTML = `${action} <span class='highlight'>${name}</span>`;
-        this.modal_amount.innerHTML  = `${amount} en Favoritos  <a href="">comprar</a>`
-        
+        const modal_message = amount > 0 ?
+            `${amount} en Favoritos  <a href="#">comprar</a>` :
+            `<p>No tienes nada en tu lista :(</p>`
+        this.modal_amount.innerHTML = modal_message;
 
-        this.modal.addEventListener('animationstart',(e)=>{
+
+        this.modal.addEventListener('animationstart', (e) => {
             switch (e.animationName) {
                 case 'pop':
-                    
+
                     break;
             }
         })
 
-        this.modal.addEventListener('animationend',(e)=>{
+        this.modal.addEventListener('animationend', (e) => {
             switch (e.animationName) {
                 case 'appear':
-                    this.modal.style.visibility = 'visible';   
+                    this.modal.style.visibility = 'visible';
                     this.modal.style.animation = 'fade-out 0.2s ease-in 5s forwards';
-                    
-                break;
-                
+
+                    break;
+
                 case 'fade-out':
-                    this.modal.style.visibility = 'hidden';    
-                break;
-            
+                    this.modal.style.visibility = 'hidden';
+                    break;
+
                 default:
                     break;
             }
-            
+
         })
-        
-    
-        const {animationName} = getComputedStyle(this.modal);
-        
-    if (animationName != 'appear') {
-        this.modal.style.animation = 'appear 0.2s forwards';  
-        return
-      }
-        
-        
+
+
+        const { animationName } = getComputedStyle(this.modal);
+
+        if (animationName != 'appear') {
+            this.modal.style.animation = 'appear 0.2s forwards';
+            return
+        }
 
     }
 
+
     // _listeners(){ 
     //     this.modal.addEventListener('mouseover',(e)=>{
-            
+
     //         e.target.style.animationPlayState = 'paused';
     //      })
 
@@ -191,21 +181,22 @@ class FavoritesController {
         this.view = view;
         this.model.setController(this);
         this.model._localStorage();
-        this.view.drawResults(this.linkToexists)
-        
-        
     }
 
-    add(data, id) {
+    add(data, element) {
         const parse = JSON.parse(data);
-        this.view.fillHeart(id);
+        this.view.fillHeart(element);
         this.model.add(parse);
     }
-    linkToexists = productID => this.model.exists(productID);
+
 
 }
 
 window.favorites = new FavoritesController(new Favorites, new FavoritesView);
+
+
+
+
 
 
 

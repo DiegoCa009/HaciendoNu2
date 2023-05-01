@@ -1,5 +1,5 @@
 import './controllers/slider-animation.js';
-import { card_model } from './helpers/card-model.js';
+import { card_model, item } from './helpers/card-model.js';
 import { Filter } from './views/results.js';
 let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
@@ -7,6 +7,19 @@ li[0].addEventListener('click', () => {
     indexInfo.scrollIntoView({ behavior: "smooth" })
 
 });
+
+class inventoryView{
+    constructor(){
+         this.items = document.querySelector('#__items-images');
+         this.image_slider = document.querySelector('.image-slider')
+    }
+    DrawInventoryItems(favorites = []){
+        this.items.innerHTML = ``;
+        favorites.forEach((obj)=>{
+            this.items.innerHTML += item(obj.image)
+        })
+    }
+}
 
 class Favorites {
     constructor() {
@@ -24,6 +37,7 @@ class Favorites {
         this.dataBase[index].favorite = true;
         this.favorites.push(this.dataBase[index]);
         this._commit();
+        this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Agregado');
 
     }
@@ -31,8 +45,8 @@ class Favorites {
         const index = this.favorites.findIndex(ob => ob.id === Number(product.id))
         this.favorites[index].favorite = false;
         this.favorites = this.favorites.filter(obj => obj.id != product.id);
-        
         this._commit();
+        this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');
 
     }
@@ -90,6 +104,7 @@ class FavoritesView {
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
         this.filter = new Filter(this.container);
+        this.inventory = new inventoryView();
     }
     fillHeart(element) {
 
@@ -98,7 +113,6 @@ class FavoritesView {
     }
 
     searchListeners(data) {
-
         this.search.addEventListener('click', async () => {
             let arr = [];
             this.container.innerHTML = "";
@@ -161,7 +175,6 @@ class FavoritesView {
 
     }
 
-
     // _listeners(){ 
     //     this.modal.addEventListener('mouseover',(e)=>{
 
@@ -173,6 +186,7 @@ class FavoritesView {
     //      }) 
     // }
 }
+
 
 
 class FavoritesController {
@@ -193,8 +207,6 @@ class FavoritesController {
 }
 
 window.favorites = new FavoritesController(new Favorites, new FavoritesView);
-
-
 
 
 

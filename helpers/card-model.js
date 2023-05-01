@@ -27,5 +27,10 @@ const card_model = (element)=>{
                 `)
 }
 
+const item = (image,event)=>{
+    return (`
+        <img class="item" src="${image}" alt="">
+    `)
+}
 
-export {card_model};
+export {card_model, item};

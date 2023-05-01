@@ -1,7 +1,3 @@
-@import url(./css/normalize.css);
-@import url(./css/font.css);
-@import url(./css/events.css);
-
 :root{
     font-size: 16px;
     --price-font: 1.2rem;
@@ -9,6 +5,9 @@
     --title-font: 1.5rem;
     --nav-font: 0.9rem;
     --buy-font: 1.2rem;
+
+    /*Color Palette */
+    --pink: ;
 }
 
     
@@ -21,7 +20,6 @@
 
 div#modal-favorites{
     border-radius: 40px;
-    font: optional;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,7 +64,7 @@ nav{
     position: relative;
     border-radius: 5px;
     background: #121111d9;
-    margin: 10px auto;
+    margin: 6px auto;
     width: 95%;
     height: 4rem;
 }
@@ -77,46 +75,17 @@ nav img{
     
 }
 
-
-ul {
-    width: 80%;
-    text-align: center;
-    margin: 0 auto;
-    list-style: none;
-    
-    
-}
-
-ul li{
-    cursor: pointer;
-    font-family: comf-l;
-    font-weight: 900;
-    font-size: var(--nav-font);
-    margin: 0 10px;
-    display: inline-block;
-    color: rgb(250, 248, 251);
-}
-
 div#index-content{
     margin: 10px auto;
-    width: 80%;
+    width: 84%;
     height: calc(100vh - 100px);
     background-color: bisque;
-    
-    
 }
-
-
-
-
-
 
 .index-info-search{
     margin: 20px auto;
     width: 100%;
     height: 100vh;
-    
-    
     
 }
 
@@ -301,8 +270,8 @@ nav ul li:nth-child(2){
     outline-style: none;
     border: none;
     font-size: var(--buy-font);  
-    border-radius: 0px;
-    padding: 13px;
+    border-radius: 12px;
+    padding: 12px;
     font-weight: bold;
     color: #ff5900fc;
     cursor: pointer;
@@ -315,14 +284,4 @@ nav ul li:nth-child(2){
     font-size: var(--price-font);
 }
 
-
-    @keyframes sliderXa {
-        from {transform: translateX(0%);}
-        to {transform: translateX(-100%); visibility: hidden;}
-    }
-
-    @keyframes sliderXb {
-        from {transform: translateX(100%);}
-        to {transform: translateX(0%);}
-    }
 

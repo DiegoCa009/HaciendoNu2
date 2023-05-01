@@ -1,0 +1,130 @@
+.box-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.box-flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.box-flex-right{
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.max-w-h{
+    width: 100%;
+    height: 100%;
+}
+
+.box-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center{
+    justify-content: center;
+    align-items: center;
+}
+
+.width-half{
+    width: 50%;
+}
+
+.width-half:nth-child(1){
+    background-color: rgb(75, 54, 143);
+}
+
+
+
+div#_inventory-items{
+    background-color:rgb(57, 59, 59);
+    width: 20%;
+    height: 100%;
+    overflow: scroll;
+}
+
+div#_inventory-options{
+    background-color:rgb(34, 34, 38);
+    width: 80%;
+    height: 100%;
+}
+
+img.item{
+    width: 100%;
+    aspect-ratio: 3/3;
+    cursor: pointer;
+}
+
+img.item:hover{
+    filter: brightness(1.1)
+}
+
+div#_product-view{
+    width: 100%;
+    height: 50%;
+    background-color: rgb(131, 109, 44);    
+}
+
+div#_product-view > div:nth-child(1){
+    height: 100%;
+    width: 100%;
+    background-color: rgb(164, 63, 63);
+}
+
+
+div#_product-view > div:nth-child(1) > div:nth-child(1){
+    background-color: rgb(255, 169, 10);
+    width: inherit;
+    height: inherit;
+}
+
+.left-arrow,
+.right-arrow{
+    font-size:30px;
+    width: 10%;
+    background-color: blueviolet;
+    height: 100%;
+    cursor: pointer;
+    
+}
+
+.image-slider{
+    height: 100%;
+    background-color: green;
+}
+
+.image-slider img{
+    width: 50%;
+}
+
+.slider-buttons{
+    padding: 10px;
+    background-color: rgb(57, 129, 197);
+    width: 100%;
+}
+
+div#_product-options{
+    background-color: rgb(129, 152, 43);
+    width: 100%;
+    height: 40%;
+}
+
+
+div#_buy-all{
+    background-color: rgb(228, 247, 142);
+    width: 100%;
+    height: 10%;
+}
+
+
+div#_buy-all * {
+    margin: 3px;
+}
+
+

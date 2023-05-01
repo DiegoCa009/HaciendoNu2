@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HaciendoNu2</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/responsive.css" />
     <link rel="stylesheet" href="./css/animate.min.css">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/events.css">
+    <link rel="stylesheet" href="./css/inventory.css">
     <script async type="module" defer src="./index.js"></script>
     
 </head>
@@ -17,19 +21,56 @@
             <h4>Abrigo</h4>
             <p>4 en Favoritos <a href="">comprar</a></p>
         </div>
-
-
     </div>
     <svg id="shape-main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,149.3C480,128,600,128,720,149.3C840,171,960,213,1080,218.7C1200,224,1320,192,1380,176L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
     <nav>
         <ul>
-            <li>PRODUCTOS</li>
-            <li>MUESTRAS</li>
-            <li>COMPRAS</li>
+            <li>Buscar</li>
+            <li>Ayuda</li>
+            <li>Mi cuenta</li>
         </ul>
     </nav>
     <div id="index-content">
-       <p>nuevo slider</p>
+        <div class="box-flex-row max-w-h">
+            
+            <div id="_inventory-items">
+                <div id="__items-images">
+                    <img class="item" src="./assets/images/unsplash-macrame1.jpg" alt="">
+                    <img class="item" src="./assets/images/unsplash-macrame2.jpg" alt="">
+                    <img class="item" src="./assets/images/unsplash-macrame3.jpg" alt="">
+                    <img class="item" src="./assets/images/results/Alemasan.jpeg" alt="">
+                </div>
+            </div>
+            <div class="box-flex-column" id="_inventory-options">
+                <div id="_product-view" class="">
+                    <div class="box-flex-column center">
+                        <div class="box-flex-row center">
+                            <div class="left-arrow box-flex-center">&lt;</div>
+                            <div class="image-slider box-flex-center"><img src="./assets/images/results/Alemasan.jpeg" alt=""></div>
+                            <div class="right-arrow box-flex-center">&gt;</div>
+                        </div>
+                        <div class="slider-buttons box-flex-center">
+                            <input type="radio" id="num" name="slider">
+                            <input type="radio" id="num" name="slider">
+                            <input type="radio" id="num" name="slider">
+                        </div>
+                    </div>
+                </div>
+                <div id="_product-options" class="box-flex-row">
+                    <div class="width-half box-flex-center">
+                        coments here
+                    </div>
+                    <div class="width-half box-flex-center">
+                        add & remove
+                    </div>
+                </div>
+                <div id="_buy-all" class="box-flex-right">
+                    <label for="terms">Aceptar terminos y condiciones</label><input type="checkbox" name="" id="terms">
+                    <button>comprar todo</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="index-info-search">

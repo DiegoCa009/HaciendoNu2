@@ -1,26 +1,31 @@
 import { card_model } from "../helpers/card-model.js"
 
 class Filter{
-    constructor(container = HTMLElement){
-        this.container = container;
+    constructor(mainView){
+        this.mainView = mainView;
+        
     }
-    perFilter(data,filter){
-        this._clearContainer()
-        data.forEach((element)=>{
-            if(!element.tags.includes(filter)) return
-            container.innerHTML += card_model(element)
-        })
+    perFavorites(){
+       const data = this.mainView.controller.model.dataBase;
+        this.mainView.container.innerHTML = "";
+            data.forEach((element) => {
+                if (!element.favorite) return
+                this.mainView.container.appendChild(card_model(element));
+            });
+
+            this.EventOverResults()
     }
-    perFavorites(data){
-        this._clearContainer()
-        data.forEach((element)=>{
-            if(!element.favorite === true) return
-            container.innerHTML += card_model(element);
-        })
+   EventOverResults(){
+        const {length} = this.mainView.container.children;
+        const data = this.mainView.controller.model.dataBase;
+        for(let i = 0; i < length;i++){
+            this.mainView.container.children[i].firstElementChild.firstElementChild
+                    .onclick = (e)=>{
+                        this.mainView.controller.add(data[i],e.target);
+                    }
+        }
     }
-    _clearContainer(){
-        this.container.innerHTML = ``
-    }
+ 
 }
 
 

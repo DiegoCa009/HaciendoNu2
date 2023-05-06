@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HaciendoNu2</title>
     <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/events.css">
     <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/responsive.css" />
     <link rel="stylesheet" href="./css/animate.min.css">
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./css/events.css">
     <link rel="stylesheet" href="./css/inventory.css">
+    <link rel="stylesheet" href="./css/responsive.css" />
     <script async type="module" defer src="./index.js"></script>
     
 </head>
@@ -32,7 +32,7 @@
     </nav>
     <div id="index-content">
         <div class="box-flex-row max-w-h">
-            
+                
             <div id="_inventory-items">
                 <div id="__items-images">
                     <img class="item" src="./assets/images/unsplash-macrame1.jpg" alt="">
@@ -60,8 +60,12 @@
                     <div class="width-half box-flex-center">
                         coments here
                     </div>
-                    <div class="width-half box-flex-center">
-                        add & remove
+                    <div id="modify-product" class="width-half box-flex-center">
+                        <button>delete</button>
+                        <button>-</button>
+                        <input type="text" readonly placeholder="1">
+                        <button>+</button>
+        
                     </div>
                 </div>
                 <div id="_buy-all" class="box-flex-right">
@@ -72,7 +76,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="index-info-search">
         <div class="_search-info-header">
             <div class="__block">
@@ -93,7 +97,7 @@
         <div id="container">
             <div class="container-results">
                 <div class="_image-container">
-                    <img src="./assets/images/icons/heart.png" alt="">
+                    <img src="./assets/images/icons/heart.png" alt="" onclick="push()">
                     <img src="./assets/images/empty-image.png" alt="Image 1">
                 </div>
                 <div class="_results-product-header">

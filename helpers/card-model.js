@@ -1,17 +1,10 @@
-const card_model = (element)=>{
-    return (`
-                <div class="container-results animate__animated animate__fadeIn">
+const card_model = (element) => {
+    const div = document.createElement('div');
+    div.classList = 'container-results animate__animated animate__fadeIn';
+    div.innerHTML = 
+    `
                         <div class="_image-container">
-                            <img class="${element.favorite ? "add-heart" : ''}" src="./assets/images/icons/heart.png" alt="" onclick="favorites.add(JSON.stringify(
-                                {
-                                    name: '${element.name}', 
-                                    id: '${element.id}',
-                                    price: '${element.price}',
-                                    description: '${element.description}',
-                                    image: '${element.image}',
-                                    
-        
-                                }),this)">
+                            <img class="${element.favorite ? "add-heart" : ''} heart-event" src="./assets/images/icons/heart.png" alt="">
                             <img src="${element.image}" alt="Image 1">  
                         </div>
                         <div class="_results-product-header">
@@ -20,17 +13,22 @@ const card_model = (element)=>{
                         </div>
                         <div class="box-help--flex-row">
                             <p class="product-price">$${element.price} MXN</p>
-                            <button>Comprar</button>
-                        </div>
-                        
-                    </div>
-                `)
+                            <button class="buy-button">Comprar</button>
+                        </div>           
+                `
+                return div;
 }
 
-const item = (image,event)=>{
+const item = (imageURL) => {
     return (`
-        <img class="item" src="${image}" alt="">
+        <img class="item" src="${imageURL.image}" alt="">
     `)
 }
 
-export {card_model, item};
+const slider = (imageURL) => {
+    return (`
+        <img class="" src="${imageURL}" alt="">
+    `)
+}
+
+export { card_model, item, slider };

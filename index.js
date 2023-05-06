@@ -1,5 +1,5 @@
 import './controllers/slider-animation.js';
-import { card_model, item } from './helpers/card-model.js';
+import { card_model, item, slider } from './helpers/card-model.js';
 import { Filter } from './views/results.js';
 let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
@@ -16,8 +16,20 @@ class inventoryView{
     DrawInventoryItems(favorites = []){
         this.items.innerHTML = ``;
         favorites.forEach((obj)=>{
-            this.items.innerHTML += item(obj.image)
+            this.items.innerHTML += item(obj);
+        });
+
+        const imgItem = document.querySelectorAll('.item');
+        imgItem.forEach(img =>{
+            img.onclick = (e)=>{
+                this.changeImageSlider(e.target.attributes[1].textContent);
+                
+            }
         })
+
+    }
+    changeImageSlider(imageURL){
+        this.image_slider.innerHTML = slider(imageURL)
     }
 }
 
@@ -91,6 +103,8 @@ class Favorites {
             if (obj.favorite === true) this.favorites.push(obj)
         })
         this.controller.view.searchListeners(this.dataBase);
+        this.controller.view.inventory.DrawInventoryItems(this.favorites)
+        
     }
 
 }
@@ -103,7 +117,7 @@ class FavoritesView {
         this.modal = document.querySelector('#modal-favorites');
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
-        this.filter = new Filter(this.container);
+        this.filter = new Filter(this);
         this.inventory = new inventoryView();
     }
     fillHeart(element) {
@@ -114,19 +128,20 @@ class FavoritesView {
 
     searchListeners(data) {
         this.search.addEventListener('click', async () => {
-            let arr = [];
             this.container.innerHTML = "";
             const txt = document.querySelector('#search-txt').value.toLowerCase();
             data.forEach((element) => {
-
                 if (!element.name.toLowerCase().includes(txt.toLowerCase())) return
-                container.innerHTML += card_model(element);
-            })
+                this.container.appendChild(card_model(element));
+                
+            });
+
+            this.filter.EventOverResults();
         })
         
         this.filters.forEach(element =>{
             element.addEventListener('click',(e)=>{
-                this.filter.perFavorites(data)
+                this.filter.perFavorites()
             })
         })
     }
@@ -185,6 +200,10 @@ class FavoritesView {
     //         e.target.style.animationPlayState = 'running';
     //      }) 
     // }
+    setController(controller){
+        this.controller = controller;
+        
+    }
 }
 
 
@@ -195,18 +214,19 @@ class FavoritesController {
         this.view = view;
         this.model.setController(this);
         this.model._localStorage();
+        this.view.setController(this);
+        this.view.filter.perFavorites()
     }
 
     add(data, element) {
-        const parse = JSON.parse(data);
         this.view.fillHeart(element);
-        this.model.add(parse);
+        this.model.add(data);
     }
 
 
 }
 
-window.favorites = new FavoritesController(new Favorites, new FavoritesView);
+const favorites = new FavoritesController(new Favorites, new FavoritesView);
 
 
 

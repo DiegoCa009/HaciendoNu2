@@ -96,11 +96,13 @@ div#_product-view > div:nth-child(1) > div:nth-child(1){
 
 .image-slider{
     height: 100%;
+    width: 22%;
     background-color: green;
 }
 
 .image-slider img{
-    width: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .slider-buttons{

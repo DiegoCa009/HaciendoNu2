@@ -9,28 +9,24 @@ li[0].addEventListener('click', () => {
 });
 
 class inventoryView{
-    constructor(){
-         this.items = document.querySelector('#__items-images');
-         this.image_slider = document.querySelector('.image-slider')
+    constructor(mainView){
+        this.mainView = mainView;
+        this.items = document.querySelector('#__items-images');
+        this.image_slider = document.querySelector('.image-slider img');
+        this.deleteProduct = document.querySelector('#delete-self');
+
     }
     DrawInventoryItems(favorites = []){
+        if (favorites.length > 0 && this.image_slider.attributes[0].nodeValue.length === 0){
+            this.image_slider.src = favorites[0].image;
+        }
         this.items.innerHTML = ``;
         favorites.forEach((obj)=>{
-            this.items.innerHTML += item(obj);
+            this.items.appendChild(item(obj,this));
         });
 
-        const imgItem = document.querySelectorAll('.item');
-        imgItem.forEach(img =>{
-            img.onclick = (e)=>{
-                this.changeImageSlider(e.target.attributes[1].textContent);
-                
-            }
-        })
+    }
 
-    }
-    changeImageSlider(imageURL){
-        this.image_slider.innerHTML = slider(imageURL)
-    }
 }
 
 class Favorites {
@@ -118,7 +114,7 @@ class FavoritesView {
         this.modal_product = document.querySelector('#modal-favorites #modal_center h4');
         this.modal_amount = document.querySelector('#modal-favorites #modal_center p');
         this.filter = new Filter(this);
-        this.inventory = new inventoryView();
+        this.inventory = new inventoryView(this);
     }
     fillHeart(element) {
 
@@ -132,11 +128,10 @@ class FavoritesView {
             const txt = document.querySelector('#search-txt').value.toLowerCase();
             data.forEach((element) => {
                 if (!element.name.toLowerCase().includes(txt.toLowerCase())) return
-                this.container.appendChild(card_model(element));
+                this.container.appendChild(card_model(element,this.controller));
                 
             });
 
-            this.filter.EventOverResults();
         })
         
         this.filters.forEach(element =>{
@@ -218,9 +213,9 @@ class FavoritesController {
         this.view.filter.perFavorites()
     }
 
-    add(data, element) {
+    add(productObject, element) {
         this.view.fillHeart(element);
-        this.model.add(data);
+        this.model.add(productObject);
     }
 
 

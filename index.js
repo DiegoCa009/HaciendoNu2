@@ -8,22 +8,30 @@ li[0].addEventListener('click', () => {
 
 });
 
-class inventoryView{
-    constructor(mainView){
+class inventoryView {
+    constructor(mainView) {
         this.mainView = mainView;
         this.items = document.querySelector('#__items-images');
         this.image_slider = document.querySelector('.image-slider img');
         this.deleteProduct = document.querySelector('#delete-self');
-
+        this.plusButton = document.querySelector('#plus-btn');
+        this.substractButton = document.querySelector('#substract-btn');
+        
     }
-    DrawInventoryItems(favorites = []){
-        if (favorites.length > 0 && this.image_slider.attributes[0].nodeValue.length === 0){
-            this.image_slider.src = favorites[0].image;
+
+    DrawInventoryItems(favorites = []) {
+        if (!favorites.length > 0) {
+            this.items.innerHTML = ``;
+            this.image_slider.src = './assets/images/empty-image.png';
         }
-        this.items.innerHTML = ``;
-        favorites.forEach((obj)=>{
-            this.items.appendChild(item(obj,this));
-        });
+
+        else {
+            this.items.innerHTML = ``;
+            favorites.forEach((obj) => {    
+                this.items.appendChild(item(obj, this));
+            });
+            this.item = document.querySelectorAll('.item')[0].click();
+        }
 
     }
 
@@ -33,6 +41,7 @@ class Favorites {
     constructor() {
         this.favorites = [];
         this.dataBase;
+        this.TemporaryPurchaseMemory = [];
 
     }
     add(product) {
@@ -56,7 +65,6 @@ class Favorites {
         this._commit();
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');
-
     }
 
     setController(controller) {
@@ -100,7 +108,7 @@ class Favorites {
         })
         this.controller.view.searchListeners(this.dataBase);
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
-        
+
     }
 
 }
@@ -128,14 +136,14 @@ class FavoritesView {
             const txt = document.querySelector('#search-txt').value.toLowerCase();
             data.forEach((element) => {
                 if (!element.name.toLowerCase().includes(txt.toLowerCase())) return
-                this.container.appendChild(card_model(element,this.controller));
-                
+                this.container.appendChild(card_model(element, this.controller));
+
             });
 
         })
-        
-        this.filters.forEach(element =>{
-            element.addEventListener('click',(e)=>{
+
+        this.filters.forEach(element => {
+            element.addEventListener('click', (e) => {
                 this.filter.perFavorites()
             })
         })
@@ -195,9 +203,9 @@ class FavoritesView {
     //         e.target.style.animationPlayState = 'running';
     //      }) 
     // }
-    setController(controller){
+    setController(controller) {
         this.controller = controller;
-        
+
     }
 }
 
@@ -214,8 +222,11 @@ class FavoritesController {
     }
 
     add(productObject, element) {
-        this.view.fillHeart(element);
-        this.model.add(productObject);
+        if (element) {
+            this.view.fillHeart(element);
+        }
+        this.model.add(productObject)
+
     }
 
 

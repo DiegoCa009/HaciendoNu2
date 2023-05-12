@@ -50,7 +50,10 @@ const item = (product,controller) => {
     itemImage.classList.add('item');
     itemImage.onclick = (e) =>{
         controller.image_slider.src = product.image;
-        
+        controller.deleteProduct.onclick = ()=>{
+            controller.mainView.controller.add(product);
+            controller.mainView.filter.perFavorites();
+        }
     }
     return itemImage;
     

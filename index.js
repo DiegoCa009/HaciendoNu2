@@ -16,6 +16,7 @@ class inventoryView {
         this.deleteProduct = document.querySelector('#delete-self');
         this.plusButton = document.querySelector('#plus-btn');
         this.substractButton = document.querySelector('#substract-btn');
+        this.amount = document.querySelector('#amount-input');
         
     }
 
@@ -41,8 +42,6 @@ class Favorites {
     constructor() {
         this.favorites = [];
         this.dataBase;
-        this.TemporaryPurchaseMemory = [];
-
     }
     add(product) {
         if (!!this.favorites.find(obj => obj.id == product.id)) {
@@ -50,21 +49,31 @@ class Favorites {
             return
         }
 
-        const index = this.dataBase.findIndex(obj => obj.id == product.id)
-        this.dataBase[index].favorite = true;
-        this.favorites.push(this.dataBase[index]);
+        const productResult = this.dataBase.find(obj => obj.id == product.id)
+        productResult.favorite = true;
+        this.favorites.push(productResult);
         this._commit();
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Agregado');
 
     }
     remove(product) {
-        const index = this.favorites.findIndex(ob => ob.id === Number(product.id))
-        this.favorites[index].favorite = false;
+        const productResult = this.dataBase.find(obj => obj.id == product.id)
+        productResult.favorite = false;
         this.favorites = this.favorites.filter(obj => obj.id != product.id);
         this._commit();
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');
+    }
+
+    quantityOfProducts(product,amount){
+        const productResult = this.dataBase.find(obj => obj.id == product.id);
+        productResult.amount = amount;
+        this._commit();
+    }
+
+    resetViews(){
+
     }
 
     setController(controller) {
@@ -75,9 +84,6 @@ class Favorites {
     _commit() {
         localStorage.setItem('database', JSON.stringify(this.dataBase));
     }
-
-
-
 
     async getData() {
 
@@ -94,6 +100,7 @@ class Favorites {
     }
     _modifyData() {
         this.dataBase.forEach(obj => obj.favorite = false);
+        this.dataBase.forEach(obj => obj.amount = 1);
     }
 
     _localStorage() {

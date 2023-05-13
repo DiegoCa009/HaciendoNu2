@@ -50,9 +50,23 @@ const item = (product,controller) => {
     itemImage.classList.add('item');
     itemImage.onclick = (e) =>{
         controller.image_slider.src = product.image;
+        controller.amount.value = product.amount;
         controller.deleteProduct.onclick = ()=>{
             controller.mainView.controller.add(product);
             controller.mainView.filter.perFavorites();
+        }
+        controller.plusButton.onclick = (e)=>{
+            const amount = Number(controller.amount.value) + 1;
+            controller.amount.value = amount;
+            controller.mainView.controller.model.quantityOfProducts(product,amount);
+    
+        }
+
+        controller.substractButton.onclick = (e)=>{
+            const amount = Number(controller.amount.value) - 1;
+            controller.amount.value = amount;
+            controller.mainView.controller.model.quantityOfProducts(product,amount);
+    
         }
     }
     return itemImage;

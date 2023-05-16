@@ -1,3 +1,9 @@
+:root{
+    --input-radio: 1.3rem;
+}
+
+
+
 .box-flex-column{
     display: flex;
     flex-direction: column;
@@ -41,6 +47,16 @@
 }
 
 
+div#index-content{
+    width: 50%;
+    height: 100vh;
+    background-color: bisque;
+}
+
+nav#shopping-car-nav{
+    background-color: rgba(31, 167, 49, 0.625);
+    height: 10%;
+}
 
 div#_inventory-items{
     background-color:rgb(57, 59, 59);
@@ -79,7 +95,7 @@ div#_product-view > div:nth-child(1){
 
 
 div#_product-view > div:nth-child(1) > div:nth-child(1){
-    background-color: rgb(255, 169, 10);
+    background-color: rgb(113, 90, 59);
     width: inherit;
     height: inherit;
 }
@@ -96,12 +112,12 @@ div#_product-view > div:nth-child(1) > div:nth-child(1){
 
 .image-slider{
     height: 100%;
-    width: 22%;
+    width: 80%;
     background-color: green;
 }
 
 .image-slider img{
-    width: 100%;
+    width: 60%;
     aspect-ratio: 1/1;
 }
 
@@ -111,12 +127,27 @@ div#_product-view > div:nth-child(1) > div:nth-child(1){
     width: 100%;
 }
 
+.slider-buttons input{
+    margin-left: 10px;
+    width: var(--input-radio);
+    height: var(--input-radio);
+}
+
+
 div#_product-options{
     background-color: rgb(129, 152, 43);
     width: 100%;
-    height: 40%;
+    height: 50%;
 }
 
+div#_product-options div#product-tags{
+    height: 80%;
+    background-color: aquamarine;
+}
+
+div#_product-options div#modify-product{
+    height: 20%;
+}
 
 div#_buy-all{
     background-color: rgb(228, 247, 142);

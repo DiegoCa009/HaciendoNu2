@@ -16,6 +16,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 div#modal-favorites{
@@ -57,36 +59,20 @@ svg#shape-main{
     
 }
 
-
-nav{
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-radius: 5px;
-    background: #121111d9;
-    margin: 6px auto;
-    width: 95%;
-    height: 4rem;
-}
-
-nav img{
-    width: 10%;
-    border-radius: 100%;
+div#main-screen{
     
 }
 
-div#index-content{
-    margin: 10px auto;
-    width: 84%;
-    height: calc(100vh - 100px);
-    background-color: bisque;
+div#exclusive-offers{
+    width: 50%;
+    height: 100vh;
+    background-color: rgb(101, 70, 105);
 }
 
 .index-info-search{
-    margin: 20px auto;
+    margin: 0px auto;
     width: 100%;
     height: 100vh;
-    
 }
 
 .index-info-search ._search-info-header {
@@ -163,13 +149,6 @@ div#index-content{
 .content_image:hover > .image_info{
     transform: translate(0,0);
 }
-
-
-
-nav ul li:nth-child(2){
-    border-bottom: solid black 1px;
-}
-
 
 /* --------------*/
 

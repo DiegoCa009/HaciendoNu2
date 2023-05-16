@@ -29,12 +29,15 @@ const card_model = (element,controller) => {
 
     const buyInformation = document.createElement('div');
     buyInformation.classList.add('box-help--flex-row');
-    const textForBuy = document.createElement('p');
-    textForBuy.classList.add('product-price');
-    textForBuy.textContent = `${element.price} MXN`;
+    const price = document.createElement('p');
+    price.classList.add('product-price');
+    price.textContent = `${element.price} MXN`;
     const buyButton = document.createElement('button');
     buyButton.classList.add('buy-button');
     buyButton.textContent = 'Comprar';
+    buyInformation.appendChild(price);
+    buyInformation.appendChild(buyButton);
+
 
     cardContent.appendChild(imageContainer);
     cardContent.appendChild(productDescription);

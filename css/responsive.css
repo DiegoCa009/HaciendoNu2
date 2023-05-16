@@ -6,7 +6,14 @@
 
 @media screen and (orientation: portrait) and (max-width: 800px){
     div#index-content{
-        height: 40vh; 
+        width: 100%;
+    }
+    div#main-screen{
+    flex-direction: column;
+    }
+
+    div#exclusive-offers{
+        width: 100%;
     }
 
     #container {

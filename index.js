@@ -5,7 +5,6 @@ let indexInfo = document.querySelector('.index-info-search');
 let li = document.querySelectorAll('li');
 li[0].addEventListener('click', () => {
     indexInfo.scrollIntoView({ behavior: "smooth" })
-
 });
 
 class inventoryView {
@@ -61,6 +60,7 @@ class Favorites {
         const productResult = this.dataBase.find(obj => obj.id == product.id)
         productResult.favorite = false;
         this.favorites = this.favorites.filter(obj => obj.id != product.id);
+        productResult.amount = 1;
         this._commit();
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Removido');

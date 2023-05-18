@@ -16,32 +16,65 @@ class inventoryView {
         this.plusButton = document.querySelector('#plus-btn');
         this.substractButton = document.querySelector('#substract-btn');
         this.amount = document.querySelector('#amount-input');
+        this.left_arrow = document.querySelector('#left-arrow');
+        this.right_arrow = document.querySelector('#right-arrow');
+        this.currentProductSelected;
         
+        
+        this._SlideByArrows();
     }
 
     DrawInventoryItems(favorites = []) {
         if (!favorites.length > 0) {
             this.items.innerHTML = ``;
             this.image_slider.src = './assets/images/empty-image.png';
+            this.currentProductSelected = null;
         }
 
         else {
             this.items.innerHTML = ``;
-            favorites.forEach((obj) => {    
-                this.items.appendChild(item(obj, this));
+            favorites.forEach((obj,index) => {    
+                this.items.appendChild(item(obj, this, index));
             });
-            this.item = document.querySelectorAll('.item')[0].click();
+            this.itemCollection = document.querySelectorAll('.item');
+            this.itemCollection[0].click();
         }
 
-    }
+    };
+    _SlideByArrows(){
+        this.left_arrow.addEventListener('click', (e)=>{
+            if (!this.currentProductSelected == null) return
+            if ((this.currentProductSelected - 1) < 0 ){
+                const selector = this.itemCollection.length - 1;
+                this.itemCollection[selector].click();
+            }
+            else{
+                const selector = this.currentProductSelected - 1 ;
+                this.itemCollection[selector].click();
+            }
+        })
+        this.right_arrow.addEventListener('click', (e)=>{
+            if (!this.currentProductSelected == null) return
+            if ((this.currentProductSelected + 1) > this.itemCollection.length - 1 ){
+                this.itemCollection[0].click();
+                
+            }
+            else{
+                const selector = this.currentProductSelected + 1 ;
+                this.itemCollection[selector].click();
+                
+            }
+        })
+
+
+    };
 
 }
-
 class Favorites {
     constructor() {
         this.favorites = [];
         this.dataBase;
-    }
+    };
     add(product) {
         if (!!this.favorites.find(obj => obj.id == product.id)) {
             this.remove(product);
@@ -55,7 +88,8 @@ class Favorites {
         this.controller.view.inventory.DrawInventoryItems(this.favorites)
         this.controller.view.drawModalAdd(product.name, this.favorites.length, 'Agregado');
 
-    }
+    };
+
     remove(product) {
         const productResult = this.dataBase.find(obj => obj.id == product.id)
         productResult.favorite = false;

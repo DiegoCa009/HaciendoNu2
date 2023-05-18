@@ -46,12 +46,13 @@ const card_model = (element,controller) => {
     return cardContent;
 }
 
-const item = (product,controller) => {
+const item = (product,controller,index) => {
     
     const itemImage = document.createElement('img');
     itemImage.src = product.image;
     itemImage.classList.add('item');
     itemImage.onclick = (e) =>{
+        controller.currentProductSelected = index;
         controller.image_slider.src = product.image;
         controller.amount.value = product.amount;
         controller.deleteProduct.onclick = ()=>{

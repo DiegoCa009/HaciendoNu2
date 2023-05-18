@@ -100,8 +100,8 @@ div#_product-view > div:nth-child(1) > div:nth-child(1){
     height: inherit;
 }
 
-.left-arrow,
-.right-arrow{
+#left-arrow,
+#right-arrow{
     font-size:30px;
     width: 10%;
     background-color: blueviolet;

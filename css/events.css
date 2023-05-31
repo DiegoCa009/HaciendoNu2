@@ -18,6 +18,14 @@
   color: #ff5900fc;
 }
 
+.slide-left{
+  animation: slideL 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.slide-right{
+  animation: slideR 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
 @keyframes pop {
   from{
     transform: scale(1.02);
@@ -56,5 +64,22 @@
     }
   }
   
-  
-  
+  @keyframes slideR {
+    from {
+      transform: translateX();
+    }
+    to {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideL {
+    from {
+      transform: translateX();
+    }
+    to {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+  }

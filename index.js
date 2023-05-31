@@ -24,6 +24,21 @@ class inventoryView {
         this._SlideByArrows();
     }
 
+    _makeAnimations(element,animation_name,time){
+        return new Promise((resolve,reject)=>{
+            try {
+                element.classList.add(animation_name)
+                setTimeout(() => {
+                    element.classList.remove(animation_name)
+                    resolve('funciona')
+                }, time);
+
+            } catch (error) {
+                reject(error)
+            }
+        })
+    };
+
     DrawInventoryItems(favorites = []) {
         if (!favorites.length > 0) {
             this.items.innerHTML = ``;
@@ -41,26 +56,32 @@ class inventoryView {
         }
 
     };
-    _SlideByArrows(){
-        this.left_arrow.addEventListener('click', (e)=>{
+    _SlideByArrows(){        
+        
+        this.left_arrow.addEventListener('click', async(e)=>{
             if (!this.currentProductSelected == null) return
             if ((this.currentProductSelected - 1) < 0 ){
                 const selector = this.itemCollection.length - 1;
+                await this._makeAnimations(this.image_slider,'slide-left',300);
                 this.itemCollection[selector].click();
             }
             else{
                 const selector = this.currentProductSelected - 1 ;
+                await this._makeAnimations(this.image_slider,'slide-left',300);
                 this.itemCollection[selector].click();
+                
             }
         })
-        this.right_arrow.addEventListener('click', (e)=>{
+        this.right_arrow.addEventListener('click', async(e)=>{
             if (!this.currentProductSelected == null) return
             if ((this.currentProductSelected + 1) > this.itemCollection.length - 1 ){
+                await this._makeAnimations(this.image_slider,'slide-right',300);
                 this.itemCollection[0].click();
                 
             }
             else{
                 const selector = this.currentProductSelected + 1 ;
+                await this._makeAnimations(this.image_slider,'slide-right',300);
                 this.itemCollection[selector].click();
                 
             }

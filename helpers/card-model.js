@@ -68,6 +68,7 @@ const item = (product,controller,index) => {
 
         controller.substractButton.onclick = (e)=>{
             const amount = Number(controller.amount.value) - 1;
+            if (amount < 0) return
             controller.amount.value = amount;
             controller.mainView.controller.model.quantityOfProducts(product,amount);
     
